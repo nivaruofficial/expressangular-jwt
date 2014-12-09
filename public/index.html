@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Angular JWT</title>
+</head>
+<body ng-controller="MainCtrl as vm">
+<div ng-show="vm.user">
+    <h1>Angular JWT - Welcome {{vm.user.username}}!</h1>
+    <h2>Get Random User</h2>
+    <button ng-click="vm.logout()">Logout</button>
+    <button ng-click="vm.getRandomUser()">Get User</button>
+    <pre ng-bind="vm.randomUser | json"></pre>
+
+</div>
+<div ng-hide="vm.user">
+    <form ng-submit="vm.login(vm.username, vm.password)">
+        <label>Username: <input type="text" ng-model="vm.username"/></label>
+        <label>Password: <input type="password" ng-model="vm.password"/></label>
+    <button type="submit">Login</button>
+    </form>
+</div>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
