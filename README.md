@@ -9,4 +9,6 @@ Instructions:
 
 2) bower install
 
-2) node server
+3) node server
+
+4) go to: http://localhost:3000
