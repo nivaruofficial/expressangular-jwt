@@ -1,7 +1,7 @@
 expressangular-jwt
 ==================
 
-Json Wen Token Authentication using jsonwebtoken and express-jwt node modules.
+Json Wen Token authentication and authorization using jsonwebtoken and express-jwt node modules.
 
 Instructions:
 
