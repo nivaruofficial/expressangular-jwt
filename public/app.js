@@ -94,7 +94,7 @@
 
     app.factory('AuthTokenFactory', function AuthTokenFactory($window){
         'use strict';
-        var store = $window.localStorage;
+        var store = $window.sessionStorage;
         var key = 'auth-token';
         return {
             getToken:getToken,
@@ -107,7 +107,9 @@
         function setToken(token){
             if(token){
                store.setItem(key, token);
-            }else {
+            }
+
+            else {
                store.removeItem(key);
             }
         }
@@ -124,6 +126,7 @@
             if(token){
                 config.headers = config.headers || {};
                 config.headers.Authorization = 'Bearer '+ token;
+                console.log('Authorization just created!');
             }
             return config;
         }

@@ -10,7 +10,7 @@ var expressJwt = require('express-jwt');
 var user = {
     username:'luigi',
     password:'p'
-}
+};
 
 // just in case of Cross Origin Requests
 app.use(cors());
@@ -45,21 +45,29 @@ app.get('/me', function(req, res){
     res.send(req.user);
 });
 
-app.listen(3000, function(){
-    console.log('Server ready on port 3000');
-})
-
 
 // Util functions
 
 function authenticate(req, res, next){
     var body = req.body;
     if(!body.username || !body.password){
-        res.sendStatus(400).end('Must provide username and password!');
+        res.status(400).send('Must provide username and password!');
     }
-    if(body.username !== user.username || body.password !== user.password){
-        res.sendStatus(401).end('Username or password incorrect');
+    else if(body.username !== user.username || body.password !== user.password){
+        res.status(401).send('Username or password incorrect');
     }
-    next();
+
+    /*else if(body.username == user.username || body.password == user.password){
+        console.log('right!');
+        next();
+    }   */
+    else {
+        req.user = user;
+        next();
+    }
+
 }
 
+app.listen(3000, function(){
+    console.log('Server ready on port 3000');
+});
